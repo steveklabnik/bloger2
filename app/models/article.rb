@@ -1,7 +1,11 @@
 class Article < ActiveRecord::Base
+	attr_accessible :image
+
 	has_many :comments
 	has_many :taggings
 	has_many :tags, through: :taggings
+
+	has_attached_file :image
 
 	def tag_list
   	self.tags.collect do |tag|
